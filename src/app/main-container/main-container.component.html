@@ -1,0 +1,20 @@
+<main class="flex flex-col md:flex-row min-h-screen">
+  <!-- Sidebar / Navigation -->
+  <nav
+    class="bg-gray-100 md:w-64 p-4 flex md:flex-col gap-4 shadow md:shadow-none"
+  >
+    <a
+      *ngFor="let nav of navs"
+      [routerLink]="nav.link"
+      routerLinkActive="text-blue-600 font-semibold"
+      class="text-gray-700 hover:text-blue-500 transition-colors"
+    >
+      {{ nav.label }}
+    </a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-6 bg-white shadow-inner">
+    <router-outlet></router-outlet>
+  </div>
+</main>

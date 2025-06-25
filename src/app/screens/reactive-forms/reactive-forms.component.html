@@ -1,0 +1,61 @@
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+  class="max-w-lg mx-auto mt-12 p-6 bg-white rounded-2xl shadow space-y-6"
+>
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Name</label>
+    <input
+      type="text"
+      formControlName="name"
+      class="mt-1 block w-full rounded-xl border border-gray-300 px-4 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+    />
+    <div
+      *ngIf="f['name'].touched && f['name'].invalid"
+      class="mt-1 text-sm text-red-600"
+    >
+      <div *ngIf="f['name'].errors?.['required']">Name is required.</div>
+      <div *ngIf="f['name'].errors?.['minlength']">Minimum 3 characters.</div>
+    </div>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Email</label>
+    <input
+      type="email"
+      formControlName="email"
+      class="mt-1 block w-full rounded-xl border border-gray-300 px-4 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+    />
+    <div
+      *ngIf="f['email'].touched && f['email'].invalid"
+      class="mt-1 text-sm text-red-600"
+    >
+      <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+      <div *ngIf="f['email'].errors?.['email']">Invalid email address.</div>
+    </div>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Age</label>
+    <input
+      type="number"
+      formControlName="age"
+      class="mt-1 block w-full rounded-xl border border-gray-300 px-4 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+    />
+    <div
+      *ngIf="f['age'].touched && f['age'].invalid"
+      class="mt-1 text-sm text-red-600"
+    >
+      <div *ngIf="f['age'].errors?.['required']">Age is required.</div>
+      <div *ngIf="f['age'].errors?.['min']">Minimum age is 18.</div>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="userForm.invalid"
+    class="w-full rounded-xl bg-blue-600 px-4 py-2 text-white font-medium shadow hover:bg-blue-700 disabled:bg-blue-300"
+  >
+    Submit
+  </button>
+</form>
